@@ -8,6 +8,7 @@ run jetty
 ```
 ./gradlew appRun
 ```
+http://localhost:8080/zk-gradle
 
 run tests
 ```
