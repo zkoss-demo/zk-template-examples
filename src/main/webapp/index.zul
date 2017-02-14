@@ -1,4 +1,5 @@
 <zk>
-	<textbox></textbox>
-	<button label="asdf"/>
+	<textbox id="testInput"/>
+	<button id="testButton" label="test" 
+			onClick='testInput.setValue("Test Successful")'/>
 </zk>
