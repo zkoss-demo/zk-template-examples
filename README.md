@@ -1,6 +1,8 @@
-ZK Gradle
+# ZK Gradle
 
 Example ZK project using gradle
+
+## Useful Build Commands
 
 run jetty
 ```
