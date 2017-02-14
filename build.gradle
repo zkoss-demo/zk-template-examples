@@ -1,0 +1,28 @@
+//apply plugin: 'war'
+apply plugin: 'jetty'
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    //maven {  
+    //    credentials {
+    //        username 'user'
+    //        password 'password'
+    //    }
+    //	url "https://maven.zkoss.org/repo/zk/ee" //ZK-EE repo requires login
+    //}
+    maven { url "http://mavensync.zkoss.org/maven2" }
+    maven { url "http://mavensync.zkoss.org/eval" }
+    mavenCentral()
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+	compile "org.zkoss.zk:zk:${zkVersion}"
+	compile "org.zkoss.zk:zkbind:${zkVersion}"
+	compile "org.zkoss.zk:zkmax:${zkVersion}"
+	compile "org.zkoss.zk:zuti:${zkVersion}"     /*optional*/
+	//compile "org.zkoss.zk:zkplus:${zkVersion}" /*optional*/
+	//compile "org.zkoss.zk:zhtml:${zkVersion}"  /*optional*/
+
+	compile "commons-io:commons-io:${commonsIoVersion}"
+}
