@@ -1,5 +1,11 @@
+<?import zk.gradle.vm.MyViewModel?>
 <zk>
-	<textbox id="testInput"/>
-	<button id="testButton" label="test" 
-			onClick='testInput.setValue("Test Successful")'/>
+	<div viewModel="@id('vm') @init('MyViewModel')" validationMessages="@id('vmsgs')">
+		Your Name: <textbox id="name" value="@bind(vm.name)"
+			onOK="@command(MyViewModel.SUBMIT_COMMAND)"/>
+		<button id="submit" label="submit" 
+			onClick='@command(MyViewModel.SUBMIT_COMMAND)'/>
+		<separator/>
+		<label id="response" value="@load(vm.response)"/>
+	</div>
 </zk>
