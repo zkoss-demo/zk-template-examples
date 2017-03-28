@@ -1,0 +1,19 @@
+<?component name="stepbar" templateURI="stepbar.zul"?>
+<?style src="stepbar.css"?>
+<zk>
+
+	<div viewModel="@id('vm') @init('zk.example.template.stepbar.HolidayOrderViewModel')" validationMessages="@id('vmsgs')" width="500px">
+		<stepbar stepModel="@init(vm.stepModel)" gotoStepCommand="gotoStep"/>
+		<if test="@load(!vm.carAdded)">
+			<button onClick="@command('addCar')" label="rent car"/>
+		</if>
+		<div align="right">
+			<if test="@load(! vm.stepModel.first)">
+				<button onClick="@command('back')" label="Back"/>
+			</if>
+			<if test="@load(! vm.stepModel.last)">
+				<button onClick="@command('next')" label="Next"/>
+			</if>
+		</div>
+	</div>
+</zk>
