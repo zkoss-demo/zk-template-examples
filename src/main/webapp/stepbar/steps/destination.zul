@@ -1,0 +1,15 @@
+<zk xmlns:x="xhtml">
+	<div sclass="page-title">
+		<span sclass="@init(step.icon)"/>
+		<label value="@init(step.label)"/>
+	</div>
+	... imagine some input form here ...
+	<if test="@load(!vm.carAdded)">
+		<separator/>
+		<div>
+			Do you need a car? (adds a later Step)
+			<separator/>
+			<button onClick="@command('addCar')" label="Yes, I need a Car!"/>
+		</div>
+	</if>
+</zk>

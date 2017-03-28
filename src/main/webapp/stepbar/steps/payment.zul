@@ -1,0 +1,7 @@
+<zk xmlns:x="xhtml">
+	<div sclass="page-title">
+		<span sclass="@init(step.icon)"/>
+		<label value="@init(step.label)"/>
+	</div>
+	... imagine some input form here ...
+</zk>

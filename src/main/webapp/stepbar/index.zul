@@ -1,17 +1,24 @@
 <?component name="stepbar" templateURI="stepbar.zul"?>
 <?style src="stepbar.css"?>
 <zk>
-
-	<div viewModel="@id('vm') @init('zk.example.template.stepbar.HolidayOrderViewModel')" validationMessages="@id('vmsgs')" width="500px">
-		<stepbar stepModel="@init(vm.stepModel)" gotoStepCommand="gotoStep"/>
-		<if test="@load(!vm.carAdded)">
-			<button onClick="@command('addCar')" label="rent car"/>
-		</if>
-		<div align="right">
-			<if test="@load(! vm.stepModel.first)">
+	<style>
+		.page-title, 
+		.page-title .z-label {
+			font-size: 30px;
+			margin: 15px;
+		}
+	</style>
+	<div viewModel="@id('vm') @init('zk.example.template.stepbar.HolidayOrderViewModel')" validationMessages="@id('vmsgs')" style="padding: 0 200px" align="center">
+		<stepbar stepBarModel="@init(vm.stepBarModel)" gotoStepCommand="gotoStep"/>
+		
+		<apply templateURI="@load(vm.stepBarModel.current.uri)" step="@load(vm.stepBarModel.current)"/>
+		
+		<separator bar="true"/>
+		<div>
+			<if test="@load(!vm.stepBarModel.first and !vm.stepBarModel.last)">
 				<button onClick="@command('back')" label="Back"/>
 			</if>
-			<if test="@load(! vm.stepModel.last)">
+			<if test="@load(!vm.stepBarModel.last)">
 				<button onClick="@command('next')" label="Next"/>
 			</if>
 		</div>

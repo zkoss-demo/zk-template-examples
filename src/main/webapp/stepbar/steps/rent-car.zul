@@ -1,0 +1,13 @@
+<zk>
+	<div sclass="page-title">
+		<span sclass="@init(step.icon)"/>
+		<label value="@init(step.label)"/>
+	</div>
+	... imagine some input form here ...
+	
+	<separator/>
+	<div>
+		<button onClick="@command('removeCar')" label="I changed my mind - remove car."/>
+	</div>
+	
+</zk>

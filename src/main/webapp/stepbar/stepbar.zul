@@ -1,5 +1,5 @@
-<div zclass="stepbar">
-	<forEach items="@init(stepModel.steps)" var="step">
+<div sclass="stepbar">
+	<forEach items="@init(stepBarModel.items)" var="step">
 		<div sclass="@load(('step ' += step.status))" 
 			onClick="@command(step.done ? gotoStepCommand : null, step=step)">
 			<span sclass="@init(('step-icon ' += step.icon))"/>
