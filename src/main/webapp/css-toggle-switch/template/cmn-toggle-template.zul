@@ -1,6 +1,6 @@
 <zk xmlns:x="xhtml" xmlns:n="native">
-	<n:div>
-		<x:input class="cmn-toggle cmn-toggle-${sclass}" type="checkbox" checked="${checked}"/>
+	<n:div class="switch">
+		<x:input class="cmn-toggle cmn-toggle-${toggleClass}" type="checkbox" checked="${checked}"/>
 		<!-- looks a bit weird: native elements join
 		the n:label gets combined with the surrounding n:div 
 		leaving the input the firstChild of the combined surrounding element -->

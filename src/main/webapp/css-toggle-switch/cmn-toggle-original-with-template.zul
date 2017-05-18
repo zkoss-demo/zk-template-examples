@@ -1,14 +1,30 @@
 <!-- integrate cmn-toggle with a template based on http://callmenick.com/post/css-toggle-switch-examples -->
 
+<?style src="https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700"?>
 <?style src="css/cmn-toggle-original.css"?>
 <?style src="css/cmn-toggle-custom.css"?>
 <?component name="toggle" templateURI="template/cmn-toggle-template.zul"?>
 
-<zk>
-	<div>
-		<toggle sclass="round" checked="true"/>
-		<toggle sclass="round-flat" />
-		<toggle sclass="yes-no" labelOn="Yes" labelOff="No"/>
-		<toggle sclass="yes-no large-icon" labelOn="&#x1F592;" labelOff="&#x1F593;" checked="true"/>
+<zk xmlns:x="xhtml">
+	<div sclass="settings">
+		<x:div class="row">
+			<x:div class="question" textContent="Enable Cookies"/>
+			<toggle toggleClass="round" checked="true"/>
+		</x:div>
+	
+		<x:div class="row">
+			<x:div class="question" textContent="Share Location"/>
+			<toggle toggleClass="round-flat" />
+		</x:div>
+	
+		<x:div class="row">
+			<x:div class="question" textContent="Do you agree?"/>
+			<toggle toggleClass="yes-no" labelOn="Yes" labelOff="No"/>
+		</x:div>
+	    
+		<x:div class="row">
+			<x:div class="question" textContent="Like it?"/>
+			<toggle toggleClass="yes-no large-icon" labelOn="&#x1F592;" labelOff="&#x1F593;" checked="true"/>
+		</x:div>
 	</div>
 </zk>

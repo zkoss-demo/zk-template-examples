@@ -1,3 +1,22 @@
+.settings {
+  display: table;
+  width: 100%;
+}
+.settings .row {
+  display: table-row;
+}
+.settings .question,
+.settings .switch {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px;
+}
+.settings .question {
+  width: 600px;
+  font-family: "Roboto Slab", serif;
+  font-size: 20px;
+}
+
 /*shared*/
 .cmn-toggle > input {
   position: absolute;

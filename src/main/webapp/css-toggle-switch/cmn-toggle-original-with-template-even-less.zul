@@ -1,0 +1,22 @@
+<!-- integrate cmn-toggle with a template based on http://callmenick.com/post/css-toggle-switch-examples -->
+
+<?style src="https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700"?>
+<?style src="css/cmn-toggle-original.css"?>
+<?style src="css/cmn-toggle-custom.css"?>
+<?component name="toggle" templateURI="template/cmn-toggle-template.zul"?>
+
+<zk xmlns:x="xhtml" xmlns:n="native">
+	<div sclass="settings">
+		<apply template="settingsRow" question="Enable Cookies" toggleClass="round" checked="true"/>
+		<apply template="settingsRow" question="Share Location" toggleClass="round-flat"/>
+		<apply template="settingsRow" question="Do you agree?" toggleClass="yes-no" labelOn="Yes" labelOff="No"/>
+		<apply template="settingsRow" question="Like it?" toggleClass="yes-no large-icon" labelOn="&#x1F592;" labelOff="&#x1F593;" checked="true"/>
+		
+		<template name="settingsRow">
+			<n:div class="row">
+				<n:div class="question">${question}</n:div>
+				<toggle/><!-- inherits the parameters passed into the settingsRow template -->
+			</n:div>
+		</template>
+	</div>
+</zk>
