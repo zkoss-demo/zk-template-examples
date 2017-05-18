@@ -1,0 +1,8 @@
+.cmn-toggle + label,
+input.cmn-toggle-yes-no + label {
+	box-sizing: border-box;
+}
+
+input.large-icon + label:before, input.large-icon + label:after {
+  font-size: 60px;
+}

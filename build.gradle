@@ -21,7 +21,7 @@ dependencies {
 	compile "org.zkoss.zk:zkbind:${zkVersion}"
 	compile "org.zkoss.zk:zkmax:${zkVersion}"
 	compile "org.zkoss.zk:zuti:${zkVersion}"    /*optional enable for shadow elements support */
-//	compile "org.zkoss.zk:zhtml:${zkVersion}"   /*optional enable for xhtml component support */
+	compile "org.zkoss.zk:zhtml:${zkVersion}"   /*optional enable for xhtml component support */
 //	compile "org.zkoss.zk:zkplus:${zkVersion}"  /*optional enable for 3rd party framework integration support */
 
 	compile "commons-io:commons-io:${commonsIoVersion}"

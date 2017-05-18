@@ -1,0 +1,14 @@
+<!-- integrate cmn-toggle with a template based on http://callmenick.com/post/css-toggle-switch-examples -->
+
+<?style src="css/cmn-toggle-original.css"?>
+<?style src="css/cmn-toggle-custom.css"?>
+<?component name="toggle" templateURI="template/cmn-toggle-template.zul"?>
+
+<zk>
+	<div>
+		<toggle sclass="round" checked="true"/>
+		<toggle sclass="round-flat" />
+		<toggle sclass="yes-no" labelOn="Yes" labelOff="No"/>
+		<toggle sclass="yes-no large-icon" labelOn="&#x1F592;" labelOff="&#x1F593;" checked="true"/>
+	</div>
+</zk>
