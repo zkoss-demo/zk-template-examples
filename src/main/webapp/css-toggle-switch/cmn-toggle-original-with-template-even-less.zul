@@ -10,7 +10,7 @@
 		<apply template="settingsRow" question="Enable Cookies" toggleClass="round" checked="true"/>
 		<apply template="settingsRow" question="Share Location" toggleClass="round-flat"/>
 		<apply template="settingsRow" question="Do you agree?" toggleClass="yes-no" labelOn="Yes" labelOff="No"/>
-		<apply template="settingsRow" question="Like it?" toggleClass="yes-no large-icon" labelOn="&#x1F592;" labelOff="&#x1F593;" checked="true"/>
+		<apply template="settingsRow" question="Like it?" toggleClass="yes-no large-icon" labelOn="&#xf087;" labelOff="&#xf088;" checked="true"/>
 		
 		<template name="settingsRow">
 			<n:div class="row">

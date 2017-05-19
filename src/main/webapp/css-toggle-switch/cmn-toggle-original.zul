@@ -34,7 +34,7 @@
 			<x:div class="question" textContent="Like it?" />
 			<x:div class="switch">
 				<x:input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-yes-no large-icon" type="checkbox" checked="true" />
-				<x:label for="cmn-toggle-4" data-on="&#x1F592;" data-off="&#x1F593;" />
+				<x:label for="cmn-toggle-4" data-on="&#xf087;" data-off="&#xf088;" />
 			</x:div>
 		</x:div>
 	</div>

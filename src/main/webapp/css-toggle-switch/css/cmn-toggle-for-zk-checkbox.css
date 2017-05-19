@@ -152,12 +152,13 @@
 
 .cmn-toggle-yes-no.large-icon > label:before,
 .cmn-toggle-yes-no.large-icon > label:after {
-  font-size: 60px;
+  font-family: FontAwesome;
+  font-size: 50px;
 }
 
 .cmn-toggle-yes-no.thumbs > label:before {
-  content: '\1F593';
+  content: '\f088';
 }
 .cmn-toggle-yes-no.thumbs > label:after {
-  content: '\1F592';
+  content: '\f087';
 }

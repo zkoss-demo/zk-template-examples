@@ -24,7 +24,7 @@
 	    
 		<x:div class="row">
 			<x:div class="question" textContent="Like it?"/>
-			<toggle toggleClass="yes-no large-icon" labelOn="&#x1F592;" labelOff="&#x1F593;" checked="true"/>
+			<toggle toggleClass="yes-no large-icon" labelOn="&#xf087;" labelOff="&#xf088;" checked="true"/>
 		</x:div>
 	</div>
 </zk>

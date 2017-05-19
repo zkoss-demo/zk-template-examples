@@ -3,5 +3,6 @@
 }
 
 input.large-icon + label:before, input.large-icon + label:after {
-  font-size: 60px;
+  font-size: 50px;
+  font-family: FontAwesome;
 }
