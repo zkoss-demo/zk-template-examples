@@ -1,0 +1,6 @@
+<zk xmlns:x="xhtml" xmlns:n="native">
+	<x:div class="switch">
+		<x:input class="cmn-toggle cmn-toggle-${toggleClass}" type="checkbox" checked="${checked}" /><!-- no whitespace
+	 --><x:label for="${self.previousSibling.uuid}" data-on="${labelOn}" data-off="${labelOff}" />
+	</x:div>
+</zk>

@@ -150,11 +150,14 @@
   transform: rotateY(0);
 }
 
-.cmn-toggle-yes-no.cmn-toggle-thumbs > label:before {
-  content: '\1F593';
+.cmn-toggle-yes-no.large-icon > label:before,
+.cmn-toggle-yes-no.large-icon > label:after {
   font-size: 60px;
 }
-.cmn-toggle-yes-no.cmn-toggle-thumbs > label:after {
+
+.cmn-toggle-yes-no.thumbs > label:before {
+  content: '\1F593';
+}
+.cmn-toggle-yes-no.thumbs > label:after {
   content: '\1F592';
-  font-size: 60px;
 }

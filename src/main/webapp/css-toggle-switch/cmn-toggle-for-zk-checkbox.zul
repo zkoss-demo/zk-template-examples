@@ -2,21 +2,19 @@
 
 <?style src="https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700"?>
 <?style src="css/cmn-toggle-for-zk-checkbox.css"?>
-<?component name="toggle" extends="checkbox" zclass="cmn-toggle"?>
 
 <zk xmlns:n="native">
 	<div sclass="settings">
 		<apply template="settingsRow" question="Enable Cookies" toggleClass="round" checked="true"/>
 		<apply template="settingsRow" question="Share Location" toggleClass="round-flat"/>
 		<apply template="settingsRow" question="Do you agree?" toggleClass="yes-no" />
-		<apply template="settingsRow" question="Like it?" toggleClass="yes-no cmn-toggle-thumbs" checked="true"/>
+		<apply template="settingsRow" question="Like it?" toggleClass="yes-no large-icon thumbs" checked="true"/>
 		
 		<template name="settingsRow">
 			<n:div class="row">
 				<n:div class="question">${question}</n:div>
-				<toggle sclass="switch cmn-toggle-${toggleClass}" checked="${checked}"/>
+				<checkbox zclass="cmn-toggle" sclass="switch cmn-toggle-${toggleClass}" checked="${checked}"/>
 			</n:div>
 		</template>
 	</div>
-
 </zk>

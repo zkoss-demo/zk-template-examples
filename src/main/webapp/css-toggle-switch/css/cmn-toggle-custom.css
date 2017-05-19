@@ -1,5 +1,4 @@
-.cmn-toggle + label,
-input.cmn-toggle-yes-no + label {
+.cmn-toggle + label {
 	box-sizing: border-box;
 }
 

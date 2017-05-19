@@ -3,7 +3,7 @@
 <?style src="https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700"?>
 <?style src="css/cmn-toggle-original.css"?>
 <?style src="css/cmn-toggle-custom.css"?>
-<?component name="toggle" templateURI="template/cmn-toggle-template.zul"?>
+<?component name="toggle" templateURI="template/cmn-toggle-template-xhtml.zul"?>
 
 <zk xmlns:x="xhtml">
 	<div sclass="settings">

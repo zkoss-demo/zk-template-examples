@@ -5,37 +5,37 @@
 <?style src="css/cmn-toggle-custom.css"?>
 
 <zk xmlns:x="xhtml">
-	<div sclass="settings">
-		<x:div class="row">
-			<x:div class="question" textContent="Enable Cookies"/>
+	<div sclass="settings"><!-- zul-div -->
+		<x:div class="row"><!-- xhtml-div -->
+			<x:div class="question" textContent="Enable Cookies" />
 			<x:div class="switch">
-			    <x:input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" checked="true"/>
-			    <x:label for="cmn-toggle-1"/>
-		    </x:div>
+				<x:input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" checked="true" />
+				<x:label for="cmn-toggle-1" />
+			</x:div>
 		</x:div>
-	
+
 		<x:div class="row">
-			<x:div class="question" textContent="Share Location"/>
+			<x:div class="question" textContent="Share Location" />
 			<x:div class="switch">
-			    <x:input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox"/>
-			    <x:label for="cmn-toggle-2"/>
-		    </x:div>
+				<x:input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" />
+				<x:label for="cmn-toggle-2" />
+			</x:div>
 		</x:div>
-	
+
 		<x:div class="row">
-			<x:div class="question" textContent="Do you agree?"/>
+			<x:div class="question" textContent="Do you agree?" />
 			<x:div class="switch">
-		        <x:input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-yes-no" type="checkbox"/>
-		        <x:label for="cmn-toggle-3" data-on="Yes" data-off="No"/>
-		    </x:div>
+				<x:input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" />
+				<x:label for="cmn-toggle-3" data-on="Yes" data-off="No" />
+			</x:div>
 		</x:div>
-	    
+
 		<x:div class="row">
-			<x:div class="question" textContent="Like it?"/>
+			<x:div class="question" textContent="Like it?" />
 			<x:div class="switch">
-		        <x:input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-yes-no large-icon" type="checkbox" checked="true"/>
-		        <x:label for="cmn-toggle-4" data-on="&#x1F592;" data-off="&#x1F593;"/>
-		    </x:div>
+				<x:input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-yes-no large-icon" type="checkbox" checked="true" />
+				<x:label for="cmn-toggle-4" data-on="&#x1F592;" data-off="&#x1F593;" />
+			</x:div>
 		</x:div>
 	</div>
 </zk>
