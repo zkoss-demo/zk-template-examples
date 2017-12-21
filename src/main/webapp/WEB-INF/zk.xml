@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <zk>
-	<!-- [Optional]
-	Uncomment if you want to defines the application's name 
-	
-	<preference>
-		<name>org.zkoss.zk.ui.WebApp.name</name>
-		<value>zk-gradle</value>
-	</preference>
-	-->
+	<listener>
+		<listener-class>org.zkoss.zkmax.au.websocket.WebSocketWebAppInit</listener-class>
+	</listener>
+
+	<!--https://www.zkoss.org/wiki/ZK_Configuration_Reference/zk.xml/The_client-config_Element/The_debug-js_Element-->
+	<client-config>
+		<debug-js>true</debug-js>
+	</client-config>
+
+	<!-- http://books.zkoss.org/zk-mvvm-book/8.0/configuration/index.html#print-zk-bind-debugging-information -->
+	<!--<library-property>-->
+		<!--<name>org.zkoss.bind.DebuggerFactory.enable</name>-->
+		<!--<value>true</value>-->
+	<!--</library-property>-->
 </zk>
