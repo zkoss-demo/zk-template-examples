@@ -43,20 +43,19 @@
 		<groupbox>
 			<caption>
 				<label value="@load((lock.resource += ' - ' += lock.status))"/>
-				<if test="@load(lock.locked)">
-					<choose>
-						<when test="@load(lock.status eq LockStatus.UNAVAILABLE)">
-							<span sclass="z-icon-lock" style="color: red">
-								locked by: <label value="@load(lock.owner)"/>
-							</span>
-						</when>
-						<when test="@load(lock.status eq LockStatus.OWNED)">
-							<span sclass="z-icon-lock" style="color: green">
-								locked by you.
-							</span>
-						</when>
-					</choose>
-				</if>
+				<choose>
+					<when test="@load(lock.status eq LockStatus.UNAVAILABLE)">
+						<span sclass="z-icon-lock" style="color: red">
+							locked by: <label value="@load(lock.owner)"/>
+						</span>
+					</when>
+					<when test="@load(lock.status eq LockStatus.OWNED)">
+						<span sclass="z-icon-lock" style="color: green">
+							locked by you.
+						</span>
+					</when>
+					<otherwise/>
+				</choose>
 			</caption>
 			<choose>
 				<when test="@load(lock.status eq LockStatus.UNAVAILABLE)">

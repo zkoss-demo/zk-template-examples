@@ -79,20 +79,16 @@ public class MonitoredResource<T extends WithId> implements Disposable{
 		this.owner = owner;
 		BindUtils.postNotifyChange(null, null, this, "owner");
 		BindUtils.postNotifyChange(null, null, this, "status");
-		BindUtils.postNotifyChange(null, null, this, "locked");
 	}
 
 	public String getOwner() {
 		return owner;
 	}
 
+//	@DependsOn("owner") //TODO reproduce problem
 	public LockStatus getStatus() {
 		return owner == null ? LockStatus.AVAILABLE :
 				self.equals(owner) ? LockStatus.OWNED : LockStatus.UNAVAILABLE;
-	}
-
-	public boolean isLocked() {
-		return getStatus() == LockStatus.UNAVAILABLE;
 	}
 
 	@Override
