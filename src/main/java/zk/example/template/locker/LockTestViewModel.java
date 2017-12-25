@@ -1,26 +1,25 @@
 package zk.example.template.locker;
 
-import io.reactivex.disposables.Disposable;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.*;
 import org.zkoss.zk.ui.Desktop;
 import zk.example.template.locker.domain.InventoryItem;
-import zk.example.template.locker.service.MonitoredResource;
+import zk.example.template.locker.service.Lockable;
+import zk.example.template.locker.service.LockTracker;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LockTestViewModel {
 
-	private static final AtomicInteger usercount = new AtomicInteger(0);
+	private static final AtomicInteger userCounter = new AtomicInteger(0);
+	private String username = "user-" + userCounter.incrementAndGet();
 
 	private List<InventoryItem> inventory;
-	private MonitoredResource<InventoryItem> currentItem = null;
-
-	private String username = "user-" + usercount.incrementAndGet();
-	private Disposable lockMonitor;
+	private Optional<LockTracker<InventoryItem>> lockTracker = Optional.empty();
 
 	@Init
 	public void init(@ContextParam(ContextType.DESKTOP) Desktop desktop) {
@@ -31,25 +30,26 @@ public class LockTestViewModel {
 	@Command
 	public void view(@BindingParam("item") InventoryItem item) {
 		clearCurrentItem();
-		currentItem = new MonitoredResource(username, item);
+		Lockable currentItem = new UiLockable(username, item);
+		lockTracker = Optional.of(new LockTracker<>(currentItem));
 		BindUtils.postNotifyChange(null, null, this, "currentItem");
 	}
 
 	private void clearCurrentItem() {
-		if(currentItem != null) {
-			currentItem.dispose();
-			currentItem = null;
-		}
+		lockTracker.ifPresent(tracker -> {
+			tracker.dispose();
+			lockTracker = Optional.empty();
+		});
 	}
 
 	@Command
 	public void lock(@BindingParam("item") InventoryItem item) {
-		currentItem.lock();
+		lockTracker.get().lock();
 	}
 
 	@Command
 	public void unlock(@BindingParam("item") InventoryItem item) {
-		currentItem.unlock();
+		lockTracker.get().unlock();
 	}
 
 	private List<InventoryItem> initInventory() {
@@ -66,8 +66,8 @@ public class LockTestViewModel {
 		return inventory;
 	}
 
-	public MonitoredResource<InventoryItem> getCurrentItem() {
-		return currentItem;
+	public Lockable<InventoryItem> getCurrentItem() {
+		return lockTracker.map(LockTracker::getLockable).orElse(null);
 	}
 
 	public String getUsername() {

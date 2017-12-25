@@ -8,19 +8,19 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 public class LockService {
-	private static Map<String, String> lockedResources = new ConcurrentHashMap<>();
-	private static Map<String, PublishSubject<LockEvent>> lockedResourceQueues = new ConcurrentHashMap<>();
+	private static Map<Object, String> lockedResources = new ConcurrentHashMap<>();
+	private static Map<Object, PublishSubject<LockEvent>> lockedResourceQueues = new ConcurrentHashMap<>();
 
 	static {
 		Observable.interval(20, TimeUnit.SECONDS)
 				.subscribe(count -> cleanIdleResourceQueues());
 	}
 
-	public static Observable<LockEvent> observeResource(String resourceKey) {
+	public static Observable<LockEvent> observeResource(Object resourceKey) {
 		return lockedResourceQueue(resourceKey).startWith(new LockEvent(resourceKey, lockedResources.get(resourceKey)));
 	}
 
-	public static boolean lock(String resourceKey, String requester) {
+	public static boolean lock(Object resourceKey, String requester) {
 		if (lockedResources.putIfAbsent(resourceKey, requester) == null) {
 			lockedResourceQueue(resourceKey).onNext(new LockEvent(resourceKey, requester));
 			return true;
@@ -29,14 +29,14 @@ public class LockService {
 		}
 	}
 
-	public static void unlock(String resourceKey, String requester) {
+	public static void unlock(Object resourceKey, String requester) {
 		if (requester.equals(lockedResources.get(resourceKey))) {
 			lockedResources.remove(resourceKey);
 			lockedResourceQueue(resourceKey).onNext(new LockEvent(resourceKey, null));
 		}
 	}
 
-	private static PublishSubject<LockEvent> lockedResourceQueue(String key) {
+	private static PublishSubject<LockEvent> lockedResourceQueue(Object key) {
 		return (PublishSubject<LockEvent>) lockedResourceQueues.computeIfAbsent(key, o -> {
 			System.out.println("create resourceQueue for: " + key);
 			return PublishSubject.create();

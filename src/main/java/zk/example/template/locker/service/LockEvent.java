@@ -1,15 +1,15 @@
 package zk.example.template.locker.service;
 
 public class LockEvent {
-	public String resourceKey;
+	public Object resourceKey;
 	public String owner;
 
-	public LockEvent(String resourceKey, String owner) {
+	public LockEvent(Object resourceKey, String owner) {
 		this.resourceKey = resourceKey;
 		this.owner = owner;
 	}
 
-	public String getResourceKey() {
+	public Object getResourceKey() {
 		return resourceKey;
 	}
 

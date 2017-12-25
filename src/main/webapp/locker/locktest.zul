@@ -1,6 +1,5 @@
 <?import zk.example.template.locker.service.LockStatus?>
 <zk>
-
 	<div viewModel="@id('vm') @init('zk.example.template.locker.LockTestViewModel')">
 		You are user: ${vm.username}
 		<grid model="@init(vm.inventory)">
