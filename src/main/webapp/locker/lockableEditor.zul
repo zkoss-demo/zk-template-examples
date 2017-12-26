@@ -1,0 +1,131 @@
+<?import zk.example.template.locker.lockservice.LockStatus?>
+<zk>
+	<style>
+		.editorContent {
+			position: relative;
+		}
+		.editorContent .unavailableOverlay {
+			position: absolute;
+			background-color: red;
+			opacity: 0.2;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+		}
+		.editorContent:hover .availableOverlay {
+			border: 1px solid grey;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+		}
+		.editorContent:hover .availableOverlay::before {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			content: 'click to edit';
+			opacity: 0.3;
+			font-size: 24px;
+		}
+	</style>
+	<div viewModel="@id('vm') @init('zk.example.template.locker.LockTestViewModel')">
+		You are user: ${vm.username}
+		<grid model="@init(vm.inventory)">
+			<template name="model">
+				<row>
+					<label value="@init(each.id)"/>
+					<label value="@init(each.name)"/>
+					<label value="@init(each.value)"/>
+					<label value="@init(each.quantity)"/>
+					<button label="view" iconSclass="z-icon-eye" onClick="@command('view', item=each)"/>
+					<button label="edit" iconSclass="z-icon-edit" onClick="@command('edit', item=each)"/>
+				</row>
+			</template>
+		</grid>
+
+		<if test="@load(!empty vm.currentItem)">
+			<apply template="lockableEditor" lockable="@load(vm.currentItem)">
+				<template name="content">
+					<apply template="@load(lockable.status)">
+						<template name="AVAILABLE">
+							<apply template="UNAVAILABLE"/>
+						</template>
+
+						<template name="UNAVAILABLE">
+							<grid>
+								<rows>
+									<row>ID <label value="@init(lockable.resource.id)"/></row>
+									<row>Name <label value="@init(lockable.resource.name)"/></row>
+									<row>Value <label value="@init(lockable.resource.value)"/></row>
+									<row>Quantity <label value="@init(lockable.resource.quantity)"/></row>
+								</rows>
+							</grid>
+						</template>
+
+						<template name="OWNED">
+							<grid form="@id('fx') @load(lockable.resource) @load(lockable.resource, after='cancel') @save(lockable.resource, before='save')"
+								onOK="@command('save', item=lockable.resource)"
+								onCancel="@command('cancel', item=lockable.resource)">
+								<rows>
+									<row>
+										ID <label value="@init(fx.id)"/>
+									</row>
+									<row>
+										Name <textbox value="@bind(fx.name)" focus="true"/>
+									</row>
+									<row>
+										Value <decimalbox value="@bind(fx.value)"/>
+									</row>
+									<row>
+										Quantity <textbox value="@bind(fx.quantity)"/>
+									</row>
+								</rows>
+							</grid>
+						</template>
+					</apply>
+				</template>
+
+			</apply>
+		</if>
+	</div>
+
+	<template name="lockableEditor">
+		<groupbox>
+			<caption>
+				<label value="@load((lockable.resource += ' - ' += lockable.status))"/>
+				<choose>
+					<when test="@load(lockable.status eq LockStatus.UNAVAILABLE)">
+						<span sclass="z-icon-lock" style="color: red"/>
+							locked by: <label value="@load(lockable.owner)"/>
+					</when>
+					<when test="@load(lockable.status eq LockStatus.OWNED)">
+						<span sclass="z-icon-lock" style="color: green"/> locked by you
+					</when>
+					<otherwise/>
+				</choose>
+			</caption>
+
+			<div sclass="editorContent">
+				<apply template="content"/>
+				<apply template="@load(lockable.status)">
+					<template name="AVAILABLE">
+						<div sclass="availableOverlay" onClick="@command('edit', item=lockable.resource)"/>
+					</template>
+					<template name="OWNED">
+						<div>
+							<separator/>
+							<button label="save" onClick="@command('save', item=lockable.resource)"/>
+							<button label="cancel" onClick="@command('cancel', item=lockable.resource)"/>
+						</div>
+					</template>
+					<template name="UNAVAILABLE">
+						<div sclass="unavailableOverlay"/>
+					</template>
+				</apply>
+			</div>
+		</groupbox>
+	</template>
+
+</zk>

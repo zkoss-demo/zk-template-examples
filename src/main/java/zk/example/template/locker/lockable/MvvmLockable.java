@@ -1,12 +1,11 @@
-package zk.example.template.locker;
+package zk.example.template.locker.lockable;
 
 import org.zkoss.bind.BindUtils;
-import zk.example.template.locker.service.LockEvent;
-import zk.example.template.locker.service.Lockable;
+import zk.example.template.locker.lockservice.LockEvent;
 
-public class UiLockable<T> extends Lockable<T> {
+public class MvvmLockable<T> extends UiLockable<T> {
 
-	public UiLockable(String self, T resource) {
+	public MvvmLockable(String self, T resource) {
 		super(self, resource);
 	}
 
@@ -19,7 +18,7 @@ public class UiLockable<T> extends Lockable<T> {
 
 	@Override
 	public String toString() {
-		return "UiLockable{" + getOwner() + " on " + getResourceKey() + '}';
+		return "MvvmLockable{" + getOwner() + " on " + getResourceKey() + '}';
 	}
 
 }

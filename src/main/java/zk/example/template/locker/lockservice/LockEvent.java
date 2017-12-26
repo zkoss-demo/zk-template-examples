@@ -1,4 +1,4 @@
-package zk.example.template.locker.service;
+package zk.example.template.locker.lockservice;
 
 public class LockEvent {
 	public Object resourceKey;

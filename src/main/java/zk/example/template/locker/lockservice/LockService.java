@@ -1,4 +1,4 @@
-package zk.example.template.locker.service;
+package zk.example.template.locker.lockservice;
 
 import io.reactivex.subjects.PublishSubject;
 import io.reactivex.Observable;

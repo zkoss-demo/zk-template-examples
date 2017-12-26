@@ -3,10 +3,12 @@ package zk.example.template.locker.domain;
 import java.math.BigDecimal;
 
 public class InventoryItem implements WithId {
-	private final long id;
+	private long id;
 	private String name;
 	private BigDecimal value;
 	private int quantity;
+
+	public InventoryItem() {}
 
 	public InventoryItem(long id) {
 		this.id = id;
@@ -49,9 +51,6 @@ public class InventoryItem implements WithId {
 
 	@Override
 	public String toString() {
-		return "InventoryItem{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				'}';
+		return name + " (" + id + ')';
 	}
 }

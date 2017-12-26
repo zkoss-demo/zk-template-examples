@@ -1,3 +1,3 @@
-package zk.example.template.locker.service;
+package zk.example.template.locker.lockservice;
 
 public enum LockStatus {AVAILABLE, OWNED, UNAVAILABLE}

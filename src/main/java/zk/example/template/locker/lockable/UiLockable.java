@@ -1,17 +1,15 @@
-package zk.example.template.locker.service;
+package zk.example.template.locker.lockable;
 
 import zk.example.template.locker.domain.WithId;
-import zk.example.template.locker.service.LockEvent;
-import zk.example.template.locker.service.LockStatus;
+import zk.example.template.locker.lockservice.LockEvent;
+import zk.example.template.locker.lockservice.LockStatus;
 
-import java.util.function.Consumer;
-
-public class Lockable<T> {
+public class UiLockable<T> {
 	private final String self;
 	private final T resource;
 	private String owner;
 
-	public Lockable(String self, T resource) {
+	public UiLockable(String self, T resource) {
 		this.self = self;
 		this.resource = resource;
 	}
@@ -37,7 +35,7 @@ public class Lockable<T> {
 				self.equals(owner) ? LockStatus.OWNED : LockStatus.UNAVAILABLE;
 	}
 
-	protected Object getResourceKey() {
+	public Object getResourceKey() {
 		if(resource instanceof WithId) {
 			return resource.getClass().getName() + "-" + ((WithId) resource).getId();
 		} else {
