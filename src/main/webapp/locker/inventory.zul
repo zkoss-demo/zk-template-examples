@@ -1,8 +1,8 @@
 <?import zk.example.template.locker.lockservice.LockStatus?>
+<?style src="/locker/template/lockableEditor.css"?>
 <?component name="lockableEditor" templateURI="/locker/template/lockableEditor.zul"?>
 <?component name="inventoryItemEdit" templateURI="/locker/template/inventoryItemEdit.zul"?>
 <?component name="inventoryItemView" templateURI="/locker/template/inventoryItemView.zul"?>
-<?style src="/locker/lockableEditorStyles.css"?>
 <zk>
 	<style>
 	</style>

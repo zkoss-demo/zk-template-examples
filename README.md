@@ -4,9 +4,13 @@ Example ZK project to show model & template techniques
 
 ## Useful Build Commands
 
-run jetty
+run jetty using gretty-plugin
 ```
 ./gradlew appRun
+```
+run jetty using jetty-runner (faster startup)
+```
+./gradlew startJettyRunner
 ```
 http://localhost:8080/zk-template-examples
 
