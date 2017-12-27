@@ -12,7 +12,7 @@ import zk.example.template.locker.lockable.MvvmLockable;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class LockableEditorViewModel {
+public class InventoryViewModel {
 	private static final AtomicInteger userCounter = new AtomicInteger(0);
 	private final String username = "user-" + userCounter.incrementAndGet();
 

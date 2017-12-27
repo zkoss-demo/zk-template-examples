@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <zk>
-	<listener>
-		<listener-class>org.zkoss.zkmax.au.websocket.WebSocketWebAppInit</listener-class>
-	</listener>
+	<!--<listener>-->
+		<!--<listener-class>org.zkoss.zkmax.au.websocket.WebSocketWebAppInit</listener-class>-->
+	<!--</listener>-->
 
 	<!--https://www.zkoss.org/wiki/ZK_Configuration_Reference/zk.xml/The_client-config_Element/The_debug-js_Element-->
 	<client-config>

@@ -1,0 +1,36 @@
+<?import zk.example.template.locker.lockservice.LockStatus?>
+<?component name="lockableEditor" templateURI="/locker/template/lockableEditor.zul"?>
+<?component name="inventoryItemEdit" templateURI="/locker/template/inventoryItemEdit.zul"?>
+<?component name="inventoryItemView" templateURI="/locker/template/inventoryItemView.zul"?>
+<?style src="/locker/lockableEditorStyles.css"?>
+<zk>
+	<style>
+	</style>
+	<div viewModel="@id('vm') @init('zk.example.template.locker.InventoryViewModel')">
+		You are user: ${vm.username}
+		<grid model="@init(vm.inventory)">
+			<template name="model">
+				<row>
+					<label value="@init(each.id)"/>
+					<label value="@init(each.name)"/>
+					<label value="@init(each.value)"/>
+					<label value="@init(each.quantity)"/>
+					<button label="view" iconSclass="z-icon-eye" onClick="@command('view', item=each)"/>
+					<button label="edit" iconSclass="z-icon-edit" onClick="@command('edit', item=each)"/>
+				</row>
+			</template>
+		</grid>
+
+		<if test="@load(!empty vm.currentItem)">
+			<lockableEditor lockable="@load(vm.currentItem)" editCommand="edit" saveCommand="save" cancelCommand="cancel">
+				<template name="content">
+					<apply template="@load(lockable.status)" item="@init(lockable.resource)">
+						<template name="AVAILABLE" src="/locker/template/inventoryItemView.zul"/>
+						<template name="UNAVAILABLE" src="/locker/template/inventoryItemView.zul"/>
+						<template name="OWNED" src="/locker/template/inventoryItemEdit.zul"/>
+					</apply>
+				</template>
+			</lockableEditor>
+		</if>
+	</div>
+</zk>

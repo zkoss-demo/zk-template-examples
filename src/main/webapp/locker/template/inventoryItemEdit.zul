@@ -1,0 +1,19 @@
+<grid form="@id('fx') @load(item) @load(item, after=cancelCommand) @save(item, before=saveCommand)"
+	  onOK="@command(saveCommand, item=item)"
+	  onCancel="@command(cancelCommand, item=item)">
+	<rows>
+		<row>
+			ID <label value="@init(fx.id)"/>
+		</row>
+		<row>
+			Name <textbox value="@bind(fx.name)" focus="true"/>
+		</row>
+		<row>
+			Value <decimalbox value="@bind(fx.value)"/>
+		</row>
+		<row>
+			Quantity <textbox value="@bind(fx.quantity)"/>
+		</row>
+	</rows>
+</grid>
+

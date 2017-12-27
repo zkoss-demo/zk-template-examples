@@ -1,0 +1,8 @@
+<grid>
+	<rows>
+		<row>ID <label value="@init(item.id)"/></row>
+		<row>Name <label value="@init(item.name)"/></row>
+		<row>Value <label value="@init(item.value)"/></row>
+		<row>Quantity <label value="@init(item.quantity)"/></row>
+	</rows>
+</grid>

@@ -1,0 +1,38 @@
+<zk>
+	<groupbox>
+		<caption>
+			<label value="@load((lockable.resource += ' - ' += lockable.status))"/>
+			<choose>
+				<when test="@load(lockable.status eq LockStatus.UNAVAILABLE)">
+					<span sclass="z-icon-lock" style="color: red"/>
+					locked by:
+					<label value="@load(lockable.owner)"/>
+				</when>
+				<when test="@load(lockable.status eq LockStatus.OWNED)">
+					<span sclass="z-icon-lock" style="color: green"/>
+					locked by you
+				</when>
+				<otherwise/>
+			</choose>
+		</caption>
+
+		<div sclass="editorContent">
+			<apply template="content"/>
+			<apply template="@load(lockable.status)">
+				<template name="AVAILABLE">
+					<div sclass="availableOverlay" onClick="@command(editCommand, item=lockable.resource)"/>
+				</template>
+				<template name="OWNED">
+					<div>
+						<separator/>
+						<button label="save" onClick="@command(saveCommand, item=lockable.resource)"/>
+						<button label="cancel" onClick="@command(cancelCommand, item=lockable.resource)"/>
+					</div>
+				</template>
+				<template name="UNAVAILABLE">
+					<div sclass="unavailableOverlay"/>
+				</template>
+			</apply>
+		</div>
+	</groupbox>
+</zk>
