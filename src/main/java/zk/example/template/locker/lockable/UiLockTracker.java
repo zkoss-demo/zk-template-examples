@@ -6,6 +6,7 @@ import zk.example.template.locker.rx.operators.ZkObservable;
 import zk.example.template.locker.lockservice.LockService;
 import zk.example.template.locker.lockservice.LockStatus;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class UiLockTracker<T> {
@@ -27,6 +28,9 @@ public class UiLockTracker<T> {
 		}
 		this.lockable = lockable;
 		lockEventSubscription = LockService.observeResource(lockable.getResourceKey())
+				//experimental idea: finetuning to reduce bursts of redundant events (reduce UI flicker)
+				//.throttleLast(50, TimeUnit.MILLISECONDS)
+				//.distinctUntilChanged((e1,e2) -> Objects.equals(e1.getOwner(), e2.getOwner()))
 				.doOnNext(event -> System.out.println("locked: " + event.owner + " on " + event.getResourceKey()))
 				.compose(ZkObservable.activated())
 				.subscribe(lockable::onLockEvent, this::resetOnError);
