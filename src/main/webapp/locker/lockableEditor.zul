@@ -6,12 +6,20 @@
 		}
 		.editorContent .unavailableOverlay {
 			position: absolute;
-			background-color: red;
-			opacity: 0.2;
+			background-color: LightCoral;
+			opacity: 0.5;
 			top: 0;
 			left: 0;
 			bottom: 0;
 			right: 0;
+		}
+		.editorContent .unavailableOverlay::before {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			color: White;
+			content: 'currently being edited';
+			font-size: 24px;
 		}
 		.editorContent:hover .availableOverlay {
 			border: 1px solid grey;
@@ -30,7 +38,7 @@
 			font-size: 24px;
 		}
 	</style>
-	<div viewModel="@id('vm') @init('zk.example.template.locker.LockTestViewModel')">
+	<div viewModel="@id('vm') @init('zk.example.template.locker.LockableEditorViewModel')">
 		You are user: ${vm.username}
 		<grid model="@init(vm.inventory)">
 			<template name="model">
@@ -66,8 +74,8 @@
 
 						<template name="OWNED">
 							<grid form="@id('fx') @load(lockable.resource) @load(lockable.resource, after='cancel') @save(lockable.resource, before='save')"
-								onOK="@command('save', item=lockable.resource)"
-								onCancel="@command('cancel', item=lockable.resource)">
+								  onOK="@command('save', item=lockable.resource)"
+								  onCancel="@command('cancel', item=lockable.resource)">
 								<rows>
 									<row>
 										ID <label value="@init(fx.id)"/>

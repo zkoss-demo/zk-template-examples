@@ -9,11 +9,10 @@ import zk.example.template.locker.domain.InventoryService;
 import zk.example.template.locker.lockable.UiLockable;
 import zk.example.template.locker.lockable.UiLockTracker;
 import zk.example.template.locker.lockable.MvvmLockable;
-import zk.example.template.locker.lockservice.LockEvent;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class LockTestViewModel {
+public class LockableEditorViewModel {
 	private static final AtomicInteger userCounter = new AtomicInteger(0);
 	private final String username = "user-" + userCounter.incrementAndGet();
 
