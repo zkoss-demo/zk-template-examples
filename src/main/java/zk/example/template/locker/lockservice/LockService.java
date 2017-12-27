@@ -1,6 +1,6 @@
 package zk.example.template.locker.lockservice;
 
-import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.Observable;
 
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LockService {
 	private static Map<Object, String> lockedResources = new ConcurrentHashMap<>();
-	private static Map<Object, PublishSubject<LockEvent>> lockedResourceQueues = new ConcurrentHashMap<>();
+	private static Map<Object, BehaviorSubject<LockEvent>> lockedResourceQueues = new ConcurrentHashMap<>();
 
 	static {
 		Observable.interval(20, TimeUnit.SECONDS)
@@ -17,7 +17,7 @@ public class LockService {
 	}
 
 	public static Observable<LockEvent> observeResource(Object resourceKey) {
-		return lockedResourceQueue(resourceKey).startWith(new LockEvent(resourceKey, lockedResources.get(resourceKey)));
+		return lockedResourceQueue(resourceKey);
 	}
 
 	public static boolean lock(Object resourceKey, String requester) {
@@ -36,10 +36,10 @@ public class LockService {
 		}
 	}
 
-	private static PublishSubject<LockEvent> lockedResourceQueue(Object key) {
-		return (PublishSubject<LockEvent>) lockedResourceQueues.computeIfAbsent(key, o -> {
+	private static BehaviorSubject<LockEvent> lockedResourceQueue(Object key) {
+		return lockedResourceQueues.computeIfAbsent(key, o -> {
 			System.out.println("create resourceQueue for: " + key);
-			return PublishSubject.create();
+			return BehaviorSubject.createDefault(new LockEvent(key, lockedResources.get(key)));
 		});
 	}
 
