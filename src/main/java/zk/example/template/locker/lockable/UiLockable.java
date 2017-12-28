@@ -35,7 +35,7 @@ public class UiLockable<T> {
 				self.equals(owner) ? LockStatus.OWNED : LockStatus.UNAVAILABLE;
 	}
 
-	public Object getResourceKey() {
+	protected Object getResourceKey() {
 		if(resource instanceof WithId) {
 			return resource.getClass().getName() + "-" + ((WithId) resource).getId();
 		} else {

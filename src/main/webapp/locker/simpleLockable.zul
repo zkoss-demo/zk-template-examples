@@ -36,23 +36,29 @@
 		</div>
 
 		<apply template="@load(vm.lockable.status)">
+
 			<template name="OWNED">
 				I am the owner. No one except me can edit until I
 				<button iconSclass="z-icon-unlock" label="unlock" onClick="@command('unlock')"/> it.
 				<separator/>
-				If I refresh the screen. The lock will be automatically released within 15 second.
+				If I refresh or close the browser tab, the lock will be automatically released.
+				<separator/>
+				If the browser crashes, gets terminated or the network disconnects, a server side alive check will release the lock within configurable intervals.
 			</template>
+
 			<template name="AVAILABLE">
 				No one has currently locked it. I can
 				<button iconSclass="z-icon-lock" label="lock" onClick="@command('lock')"/> it.
 				<separator/>
 				If another user (e.g. in another browser) locks the resource it will be displayed as locked.
 			</template>
+
 			<template name="UNAVAILABLE">
 				currently locked by '${vm.lockable.owner}'.
 				<separator/>
 				I have to wait for the lock to be released. e.g. manually or after a timeout (in case the user is disconnected)
 			</template>
+
 		</apply>
 	</div>
 </zk>

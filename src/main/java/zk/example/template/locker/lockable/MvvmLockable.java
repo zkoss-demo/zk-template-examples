@@ -18,7 +18,7 @@ public class MvvmLockable<T> extends UiLockable<T> {
 
 	@Override
 	public String toString() {
-		return "MvvmLockable{" + getOwner() + " on " + getResourceKey() + '}';
+		return "MvvmLockable{" + getSelf() + " on " + getResourceKey() + '}';
 	}
 
 }
