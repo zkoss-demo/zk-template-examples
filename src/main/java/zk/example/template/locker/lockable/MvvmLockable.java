@@ -3,7 +3,7 @@ package zk.example.template.locker.lockable;
 import org.zkoss.bind.BindUtils;
 import zk.example.template.locker.lockservice.LockEvent;
 
-public class MvvmLockable<T> extends UiLockable<T> {
+public class MvvmLockable<T> extends Lockable<T> {
 
 	public MvvmLockable(String self, T resource) {
 		super(self, resource);

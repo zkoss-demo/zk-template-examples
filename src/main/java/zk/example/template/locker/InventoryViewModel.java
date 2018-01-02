@@ -8,7 +8,7 @@ import zk.example.template.locker.domain.InventoryItem;
 import zk.example.template.locker.domain.InventoryService;
 import zk.example.template.locker.lockable.MvvmLockable;
 import zk.example.template.locker.lockable.UiLockTracker;
-import zk.example.template.locker.lockable.UiLockable;
+import zk.example.template.locker.lockable.Lockable;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -53,7 +53,7 @@ public class InventoryViewModel {
 		return inventory;
 	}
 
-	public UiLockable<InventoryItem> getCurrentItem() {
+	public Lockable<InventoryItem> getCurrentItem() {
 		return lockTracker.getLockable();
 	}
 

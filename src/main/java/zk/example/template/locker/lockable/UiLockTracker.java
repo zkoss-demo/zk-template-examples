@@ -2,7 +2,6 @@ package zk.example.template.locker.lockable;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.util.DesktopCleanup;
@@ -20,7 +19,7 @@ public class UiLockTracker<T> {
 	private Desktop desktop;
 	private DesktopCleanup desktopCleanup;
 
-	private UiLockable<T> lockable;
+	private Lockable<T> lockable;
 	private Disposable lockEventSubscription;
 	private Disposable aliveCheckSubscription;
 
@@ -30,12 +29,16 @@ public class UiLockTracker<T> {
 		this.desktop = Executions.getCurrent().getDesktop();
 	}
 
-	public void observe(UiLockable<T> lockable) {
+	public void observe(Lockable<T> lockable) {
 		if(this.lockable != null) {
 			throw new IllegalStateException("still watching: " + this.lockable);
 		}
-		addDesktopCleanup();
 		this.lockable = lockable;
+		subscribeToLockEvents(lockable);
+		addDesktopCleanup();
+	}
+
+	private void subscribeToLockEvents(Lockable<T> lockable) {
 		lockEventSubscription = LockService.observeResource(lockable.getResourceKey())
 				//experimental idea: finetuning to reduce bursts of redundant events (reduce UI flicker)
 				//.throttleLast(50, TimeUnit.MILLISECONDS)
@@ -46,7 +49,7 @@ public class UiLockTracker<T> {
 				.subscribe(lockable::onLockEvent, this::resetOnError);
 	}
 
-	public void toggleAliveCheck(LockEvent event, UiLockable lockable) {
+	private void toggleAliveCheck(LockEvent event, Lockable lockable) {
 		if(Objects.equals(event.owner, lockable.getSelf())) {
 			startAliveCheck();
 		} else {
@@ -87,7 +90,7 @@ public class UiLockTracker<T> {
 		removeDesktopCleanup();
 	}
 
-	public UiLockable<T> getLockable() {
+	public Lockable<T> getLockable() {
 		return lockable;
 	}
 

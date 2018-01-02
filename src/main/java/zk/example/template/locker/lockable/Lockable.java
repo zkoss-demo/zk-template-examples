@@ -4,12 +4,12 @@ import zk.example.template.locker.domain.WithId;
 import zk.example.template.locker.lockservice.LockEvent;
 import zk.example.template.locker.lockservice.LockStatus;
 
-public class UiLockable<T> {
+public class Lockable<T> {
 	private final String self;
 	private final T resource;
 	private String owner;
 
-	public UiLockable(String self, T resource) {
+	public Lockable(String self, T resource) {
 		this.self = self;
 		this.resource = resource;
 	}
