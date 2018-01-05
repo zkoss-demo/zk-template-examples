@@ -1,4 +1,4 @@
-<?import zk.example.template.locker.lockservice.LockStatus?>
+<?import zk.example.template.locker.lockable.LockStatus?>
 <?style src="/locker/template/lockableEditor.css"?>
 <?component name="lockableEditor" templateURI="/locker/template/lockableEditor.zul"?>
 <zk>

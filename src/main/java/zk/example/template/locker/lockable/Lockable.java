@@ -2,7 +2,6 @@ package zk.example.template.locker.lockable;
 
 import zk.example.template.locker.domain.WithId;
 import zk.example.template.locker.lockservice.LockEvent;
-import zk.example.template.locker.lockservice.LockStatus;
 
 public class Lockable<T> {
 	private final String self;

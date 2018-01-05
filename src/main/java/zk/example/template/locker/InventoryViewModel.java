@@ -6,9 +6,9 @@ import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zul.ListModelList;
 import zk.example.template.locker.domain.InventoryItem;
 import zk.example.template.locker.domain.InventoryService;
+import zk.example.template.locker.lockable.Lockable;
 import zk.example.template.locker.lockable.MvvmLockable;
 import zk.example.template.locker.lockable.UiLockTracker;
-import zk.example.template.locker.lockable.Lockable;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

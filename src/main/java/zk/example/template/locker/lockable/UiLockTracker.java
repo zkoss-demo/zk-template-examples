@@ -8,7 +8,6 @@ import org.zkoss.zk.ui.util.DesktopCleanup;
 import zk.example.template.locker.lockservice.LockEvent;
 import zk.example.template.locker.rx.operators.ZkObservable;
 import zk.example.template.locker.lockservice.LockService;
-import zk.example.template.locker.lockservice.LockStatus;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
