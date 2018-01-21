@@ -2,3 +2,8 @@
 build/
 out/
 
+/target/
+/bin/
+/WebContent/
+/.classpath
+/.project
