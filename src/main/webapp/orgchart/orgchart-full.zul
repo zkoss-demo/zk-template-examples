@@ -1,0 +1,22 @@
+<?style src="css/orgchart.css"?>
+<?style src="css/orgchart-vertical.css"?>
+<?style src="css/full.css"?>
+<?component name="orgchart" templateURI="template/orgchart-full-template.zul"?>
+<zk>
+	<div sclass="centered" viewModel="@id('vm') @init('zk.example.template.orgchart.OrgChartViewModel')">
+		<orgchart root="@init(vm.orgChartRoot)">
+			<template name="nodecontent">
+				<div sclass="orgnode ${data.type}">
+					<if test="${!empty data.icon}">
+						<div sclass="icon" style="${('background-image: url(\'' += data.icon += '\')')}"/>
+					</if>
+					<label value="${data.label}"/>
+					<if test="${!empty data.line2}">
+						<separator/>
+						<label value="${data.line2}"/>
+					</if>
+				</div>
+			</template>
+		</orgchart>
+	</div>
+</zk>

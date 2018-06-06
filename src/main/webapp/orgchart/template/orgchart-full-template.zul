@@ -1,0 +1,17 @@
+<div sclass="orgchart">
+	<apply template="node" node="${root}" root="${true}"/>
+	<template name="node">
+		<div sclass="node${root ? ' root' : ''}${node.leaf ? ' leaf' : ''}${node.vertical ? ' vertical' : ''}">
+			<div sclass="nodecontent">
+				<apply template="nodecontent" data="${node.data}"/>
+			</div>
+			<if test="${not empty node.children}">
+				<div sclass="nodelist">
+					<forEach items="${node.children}">
+						<apply template="node" node="${each}" root="${false}"/>
+					</forEach>
+				</div>
+			</if>
+		</div>
+	</template>
+</div>

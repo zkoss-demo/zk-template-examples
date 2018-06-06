@@ -1,0 +1,60 @@
+.centered {
+    text-align: center;
+}
+
+.orgnode {
+    position:relative;
+    border-radius: 4px;
+    padding: 15px 20px;
+    color: white;
+}
+
+.orgnode > .icon {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.5);
+    width: 86px;
+    height: 86px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0);
+    background-size: calc(100% + 2px);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.orgnode.PRESIDENT {
+    margin-top: 80px;
+    background-color: #306284;
+}
+
+.orgnode.PRESIDENT > .icon {
+    top: -80px;
+    left: 50%;
+    margin-left: -43px;
+}
+
+.orgnode.VICE_PRESIDENT {
+    text-align: left;
+}
+
+.orgnode.VICE_PRESIDENT {
+    margin-left: 43px;
+    padding-left: 53px;
+    background-color: #3B93B7;
+}
+
+.orgnode.VICE_PRESIDENT > .icon {
+    top: 50%;
+    left: -43px;
+    margin-top: -43px;
+}
+
+.orgnode.SUPERVISOR {
+    background-color: #00CABD;
+}
+
+.orgnode.EMPLOYEE {
+    background-color: #73B6B1;
+}
+
+

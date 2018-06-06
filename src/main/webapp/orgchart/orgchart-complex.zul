@@ -1,0 +1,118 @@
+<?component name="nodelist" extends="div" zclass="nodelist"?>
+<?component name="node" extends="div" zclass="node"?>
+<?component name="nodecontent" extends="div" zclass="nodecontent"?>
+<?style src="css/orgchart.css"?>
+<zk xmlns:w="client">
+	<style>
+		/*usage specific styles*/
+
+		.person {
+			border: 1px solid Khaki;
+			border-radius: 8px;
+			background-color: LightYellow;
+			box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+			padding: 5px;
+			text-align: center;
+			margin-bottom: 5px;
+		}
+
+		.person:last-child {
+			margin-bottom: 0;
+		}
+
+		.collapse {
+			position: absolute;
+			bottom: -10px;
+			left: calc(50% - 7.5px);
+			z-index: 1;
+		}
+
+		.centered {
+			text-align: center;
+		}
+	</style>
+
+	<div sclass="centered">
+		<div sclass="orgchart">
+			<node sclass="root">
+				<nodecontent>
+					<apply template="collapsible"/>
+					<apply template="person" unit="Sales / Support" name="Jean"/>
+				</nodecontent>
+				<nodelist>
+					<node>
+						<nodecontent>
+							<apply template="collapsible"/>
+							<apply template="person" unit="Support Team" name="Robert"/>
+						</nodecontent>
+						<nodelist>
+							<node sclass="leaf">
+								<nodecontent>
+									<apply template="person" name="Hawk Hero the Best"/>
+								</nodecontent>
+							</node>
+							<node sclass="leaf">
+								<nodecontent>
+									<apply template="person" name="Matt"/>
+								</nodecontent>
+							</node>
+							<node>
+								<nodecontent>
+									<apply template="collapsible"/>
+									<apply template="person" name="4 Matts"/>
+								</nodecontent>
+								<nodelist>
+									<node sclass="leaf">
+										<nodecontent>
+											<apply template="person" name="Matt"/>
+											<apply template="person" name="Matt"/>
+										</nodecontent>
+									</node>
+									<node sclass="leaf">
+										<nodecontent>
+											<apply template="person" name="Matt the Great"/>
+											<apply template="person" name="Matt"/>
+										</nodecontent>
+									</node>
+								</nodelist>
+							</node>
+						</nodelist>
+					</node>
+					<node>
+						<nodecontent>
+							<apply template="person" name="Elena"/>
+						</nodecontent>
+						<nodelist>
+							<node sclass="leaf">
+								<nodecontent>
+									<apply template="person" name="More A"/>
+									<apply template="person" name="More B"/>
+									<apply template="person" name="More C"/>
+								</nodecontent>
+							</node>
+						</nodelist>
+					</node>
+					<node sclass="leaf">
+						<nodecontent>
+							<apply template="person" name="Michelle"/>
+						</nodecontent>
+					</node>
+				</nodelist>
+			</node>
+		</div>
+	</div>
+	<template name="collapsible">
+		<a sclass="collapse" iconSclass="z-icon-minus-circle"
+		   w:onClick="jq(this).closest('.node').toggleClass('collapsed'); jq(this).find('i').toggleClass('z-icon-minus-circle z-icon-plus-circle');" />
+	</template>
+
+	<template name="person">
+		<div sclass="person">
+			<if test="${not empty unit}">
+				${unit}
+				<separator/>
+			</if>
+			${name}
+		</div>
+	</template>
+</zk>

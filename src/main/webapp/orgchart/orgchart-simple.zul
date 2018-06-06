@@ -1,0 +1,49 @@
+<?style src="css/orgchart.css"?>
+<?style src="css/mystyles.css"?>
+<zk>
+	<div sclass="centered">
+		<div sclass="orgchart">
+			<div sclass="node root">
+				<div sclass="nodecontent">
+					<label value="Company"/>
+				</div>
+				<div sclass="nodelist">
+					<div sclass="node">
+						<div sclass="nodecontent">
+							<label value="Sales Department"/>
+						</div>
+						<div sclass="nodelist">
+							<div sclass="node leaf">
+								<div sclass="nodecontent">
+									<label value="Sales Unit I"/>
+								</div>
+							</div>
+							<div sclass="node leaf">
+								<div sclass="nodecontent">
+									<label value="Sales Unit II"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div sclass="node leaf">
+						<div sclass="nodecontent">
+							<label value="Purchase Department"/>
+						</div>
+					</div>
+					<div sclass="node">
+						<div sclass="nodecontent">
+							<label value="Controlling"/>
+						</div>
+						<div sclass="nodelist">
+							<div sclass="node leaf">
+								<div sclass="nodecontent">
+									<label value="Controlling Unit I"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</zk>

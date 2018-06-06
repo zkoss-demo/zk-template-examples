@@ -1,0 +1,28 @@
+<?style src="css/orgchart.css"?>
+<?style src="css/mystyles.css"?>
+<?component name="orgchart" templateURI="template/orgchart-simple-template.zul"?>
+<zk>
+	<zscript>
+		DefaultTreeNode sales1 = new DefaultTreeNode("Sales Unit I");
+		DefaultTreeNode sales2 = new DefaultTreeNode("Sales Unit II");
+		DefaultTreeNode sales = new DefaultTreeNode("Sales Department", new DefaultTreeNode[] {sales1, sales2});
+		DefaultTreeNode purchase = new DefaultTreeNode("Purchase Department");
+		DefaultTreeNode controlling1 = new DefaultTreeNode("Controlling Unit I");
+		DefaultTreeNode controlling = new DefaultTreeNode("Controlling", new DefaultTreeNode[] {controlling1});
+		DefaultTreeNode company = new DefaultTreeNode("Company", new DefaultTreeNode[] {sales, purchase, controlling});
+	</zscript>
+
+	<div sclass="centered">
+		<orgchart root="${company}">
+			<template name="nodecontent">
+				<div>
+					<if test="${!root}">
+						<image src="icon/user${data.length() % 4 + 1}.svg"/>
+						<separator/>
+					</if>
+					<label value="${data}" style="${root ? 'font-size: 30px' : ''}"/>
+				</div>
+			</template>
+		</orgchart>
+	</div>
+</zk>

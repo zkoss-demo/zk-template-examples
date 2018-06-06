@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_3.dtd">
+
+<Configure id="zkApp" class="org.eclipse.jetty.webapp.WebAppContext">
+	<Set name="resourceBase">src/main/webapp</Set>
+	<!-- disable useFileMappedBuffer: allows updating static resource files on windows without restart -->
+	<Call name="setInitParameter">
+		<Arg>org.eclipse.jetty.servlet.Default.useFileMappedBuffer</Arg>
+		<Arg>false</Arg>
+	</Call>
+</Configure>

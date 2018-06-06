@@ -1,0 +1,73 @@
+.orgchart {
+    display: inline-block;
+}
+
+.nodelist {
+    display: flex;
+    justify-content: center;
+}
+
+.node {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.nodecontent {
+    align-self: center;
+    position: relative;
+    margin: 20px 5px;
+}
+
+.node:not(:only-child)::before {
+    content: '';
+    position: absolute;
+    border-top: 2px solid #CCCCCC;
+    width: 100%;
+    height: 20px;
+    top: 0px;
+    z-index: -1;
+}
+
+.node:first-child::before {
+    width: calc(50% + 1px);
+    right: 0;
+    border-left: 2px solid #CCCCCC;
+    border-top-left-radius: 7px;
+}
+
+.node:last-child::before {
+    width: calc(50% + 1px);
+    border-right: 2px solid #CCCCCC;
+    border-top-right-radius: 7px;
+}
+
+.nodecontent::after,
+.nodecontent::before {
+    content: '';
+    position: absolute;
+    border-left: 2px solid #CCCCCC;
+    width: 20px;
+    height: 20px;
+    left: calc(50% - 1px);
+    bottom: -20px;
+    z-index: -1;
+}
+
+.nodecontent::before {
+    top: -20px;
+}
+
+.node:first-child:not(:only-child) > .nodecontent::before,
+.node:last-child:not(:only-child) > .nodecontent::before {
+    border: none;
+}
+
+.node.leaf > .nodecontent::after,
+.node.root > .nodecontent::before,
+.node.collapsed > .nodecontent::after {
+    display: none;
+}
+
+.node.collapsed > .nodelist {
+    display: none;
+}
