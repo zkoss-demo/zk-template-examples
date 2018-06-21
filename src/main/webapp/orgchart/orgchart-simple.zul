@@ -1,49 +1,35 @@
 <?style src="css/orgchart.css"?>
 <?style src="css/mystyles.css"?>
 <zk>
-	<div sclass="centered">
-		<div sclass="orgchart">
-			<div sclass="node root">
-				<div sclass="nodecontent">
-					<label value="Company"/>
-				</div>
-				<div sclass="nodelist">
-					<div sclass="node">
-						<div sclass="nodecontent">
-							<label value="Sales Department"/>
-						</div>
-						<div sclass="nodelist">
-							<div sclass="node leaf">
-								<div sclass="nodecontent">
-									<label value="Sales Unit I"/>
-								</div>
-							</div>
-							<div sclass="node leaf">
-								<div sclass="nodecontent">
-									<label value="Sales Unit II"/>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div sclass="node leaf">
-						<div sclass="nodecontent">
-							<label value="Purchase Department"/>
-						</div>
-					</div>
-					<div sclass="node">
-						<div sclass="nodecontent">
-							<label value="Controlling"/>
-						</div>
-						<div sclass="nodelist">
-							<div sclass="node leaf">
-								<div sclass="nodecontent">
-									<label value="Controlling Unit I"/>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<div xmlns="xhtml" class="centered">
+		<ul class="orgchart">
+			<li class="root">
+				<div class="nodecontent">Company</div>
+				<ul>
+					<li>
+						<div class="nodecontent">Sales Department</div>
+						<ul>
+							<li class="leaf">
+								<div class="nodecontent">Sales Unit I</div>
+							</li>
+							<li class="leaf">
+								<div class="nodecontent">Sales Unit II</div>
+							</li>
+						</ul>
+					</li>
+					<li class="leaf">
+						<div class="nodecontent">Purchase Department</div>
+					</li>
+					<li>
+						<div class="nodecontent">Controlling</div>
+						<ul>
+							<li class="leaf">
+								<div class="nodecontent">Controlling Unit I</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
 	</div>
 </zk>

@@ -1,6 +1,3 @@
-<?component name="nodelist" extends="div" zclass="nodelist"?>
-<?component name="node" extends="div" zclass="node"?>
-<?component name="nodecontent" extends="div" zclass="nodecontent"?>
 <?style src="css/orgchart.css"?>
 <zk xmlns:w="client">
 	<style>
@@ -32,78 +29,79 @@
 		}
 	</style>
 
-	<div sclass="centered">
-		<div sclass="orgchart">
-			<node sclass="root">
-				<nodecontent>
-					<apply template="collapsible"/>
-					<apply template="person" unit="Sales / Support" name="Jean"/>
-				</nodecontent>
-				<nodelist>
-					<node>
-						<nodecontent>
-							<apply template="collapsible"/>
-							<apply template="person" unit="Support Team" name="Robert"/>
-						</nodecontent>
-						<nodelist>
-							<node sclass="leaf">
-								<nodecontent>
-									<apply template="person" name="Hawk Hero the Best"/>
-								</nodecontent>
-							</node>
-							<node sclass="leaf">
-								<nodecontent>
-									<apply template="person" name="Matt"/>
-								</nodecontent>
-							</node>
-							<node>
-								<nodecontent>
-									<apply template="collapsible"/>
-									<apply template="person" name="4 Matts"/>
-								</nodecontent>
-								<nodelist>
-									<node sclass="leaf">
-										<nodecontent>
-											<apply template="person" name="Matt"/>
-											<apply template="person" name="Matt"/>
-										</nodecontent>
-									</node>
-									<node sclass="leaf">
-										<nodecontent>
-											<apply template="person" name="Matt the Great"/>
-											<apply template="person" name="Matt"/>
-										</nodecontent>
-									</node>
-								</nodelist>
-							</node>
-						</nodelist>
-					</node>
-					<node>
-						<nodecontent>
-							<apply template="person" name="Elena"/>
-						</nodecontent>
-						<nodelist>
-							<node sclass="leaf">
-								<nodecontent>
-									<apply template="person" name="More A"/>
-									<apply template="person" name="More B"/>
-									<apply template="person" name="More C"/>
-								</nodecontent>
-							</node>
-						</nodelist>
-					</node>
-					<node sclass="leaf">
-						<nodecontent>
-							<apply template="person" name="Michelle"/>
-						</nodecontent>
-					</node>
-				</nodelist>
-			</node>
-		</div>
+	<div xmlns="xhtml" xmlns:sh="shadow" class="centered">
+		<ul class="orgchart">
+			<li class="root">
+				<div class="nodecontent">
+					<sh:apply template="collapsible"/>
+					<sh:apply template="person" unit="Sales / Support" name="Jean"/>
+				</div>
+				<ul>
+					<li>
+						<div class="nodecontent">
+							<sh:apply template="collapsible"/>
+							<sh:apply template="person" unit="Support Team" name="Robert"/>
+						</div>
+						<ul>
+							<li class="leaf">
+								<div class="nodecontent">
+									<sh:apply template="person" name="Hawk Hero the Best"/>
+								</div>
+							</li>
+							<li class="leaf">
+								<div class="nodecontent">
+									<sh:apply template="person" name="Matt"/>
+								</div>
+							</li>
+							<li>
+								<div class="nodecontent">
+									<sh:apply template="collapsible"/>
+									<sh:apply template="person" name="4 Matts"/>
+								</div>
+								<ul>
+									<li class="leaf">
+										<div class="nodecontent">
+											<sh:apply template="person" name="Matt"/>
+											<sh:apply template="person" name="Matt"/>
+										</div>
+									</li>
+									<li class="leaf">
+										<div class="nodecontent">
+											<sh:apply template="person" name="Matt the Great"/>
+											<sh:apply template="person" name="Matt"/>
+										</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<div class="nodecontent">
+							<sh:apply template="person" name="Elena"/>
+						</div>
+						<ul>
+							<li class="leaf">
+								<div class="nodecontent">
+									<sh:apply template="person" name="More A"/>
+									<sh:apply template="person" name="More B"/>
+									<sh:apply template="person" name="More C"/>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li class="leaf">
+						<div class="nodecontent">
+							<sh:apply template="person" name="Michelle"/>
+						</div>
+					</li>
+				</ul>
+			</li>
+		</ul>
 	</div>
+	
 	<template name="collapsible">
 		<a sclass="collapse" iconSclass="z-icon-minus-circle"
-		   w:onClick="jq(this).closest('.node').toggleClass('collapsed'); jq(this).find('i').toggleClass('z-icon-minus-circle z-icon-plus-circle');" />
+		   w:onClick="jq(this).closest('li').toggleClass('collapsed'); jq(this).find('i').toggleClass('z-icon-minus-circle z-icon-plus-circle');" />
 	</template>
 
 	<template name="person">

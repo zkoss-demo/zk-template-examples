@@ -1,17 +1,17 @@
-<div sclass="orgchart">
+<x:ul class="orgchart" xmlns:x="xhtml">
 	<apply template="node" node="${root}" root="${true}"/>
 	<template name="node">
-		<div sclass="node${root ? ' root' : ''}${node.leaf ? ' leaf' : ''}${node.vertical ? ' vertical' : ''}">
-			<div sclass="nodecontent">
+		<x:li class="${root ? ' root' : ''}${node.leaf ? ' leaf' : ''}${node.vertical ? ' vertical' : ''}">
+			<x:div class="nodecontent">
 				<apply template="nodecontent" data="${node.data}"/>
-			</div>
+			</x:div>
 			<if test="${not empty node.children}">
-				<div sclass="nodelist">
+				<x:ul sclass="nodelist">
 					<forEach items="${node.children}">
 						<apply template="node" node="${each}" root="${false}"/>
 					</forEach>
-				</div>
+				</x:ul>
 			</if>
-		</div>
+		</x:li>
 	</template>
-</div>
+</x:ul>
