@@ -3,6 +3,9 @@
 	<template name="node">
 		<x:li class="${root ? ' root' : ''}${node.leaf ? ' leaf' : ''}${node.vertical ? ' vertical' : ''}">
 			<x:div class="nodecontent">
+				<if test="${collapsible}">
+					<apply template="collapsible" node="${node}"/>
+				</if>
 				<apply template="nodecontent" data="${node.data}"/>
 			</x:div>
 			<if test="${not empty node.children}">

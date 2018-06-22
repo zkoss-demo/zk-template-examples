@@ -1,5 +1,5 @@
 <?style src="css/orgchart.css"?>
-<?style src="css/mystyles.css"?>
+<?style src="css/simple.css"?>
 <zk>
 	<div xmlns="xhtml" class="centered">
 		<ul class="orgchart">

@@ -1,0 +1,19 @@
+<?style src="css/orgchart.css"?>
+<?style src="css/orgchart-vertical.css"?>
+<?style src="css/simple.css"?>
+<?component name="orgchart" templateURI="template/orgchart-template.zul"?>
+<zk>
+	<div sclass="centered" viewModel="@id('vm') @init('zk.example.template.orgchart.OrgChartViewModel')">
+		<orgchart root="@init(vm.orgChartRoot)">
+			<template name="nodecontent">
+				<div>
+					<label value="${data.title}"/>
+					<if test="${!empty data.name}">
+						<separator/>
+						<label value="${data.name}"/>
+					</if>
+				</div>
+			</template>
+		</orgchart>
+	</div>
+</zk>

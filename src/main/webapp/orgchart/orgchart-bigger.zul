@@ -1,5 +1,4 @@
 <?style src="css/orgchart.css"?>
-<?style src="css/orgchart-vertical.css"?>
 <?style src="css/simple.css"?>
 <zk>
 	<div xmlns="xhtml" class="centered">
@@ -8,9 +7,9 @@
 				<div class="nodecontent">President</div>
 				<ul>
 					<li class="node">
-						<div class="nodecontent">Vice President <br/> Account Services</div>
+						<div class="nodecontent">Vice President<br/>Account Services</div>
 						<ul>
-							<li class="vertical">
+							<li>
 								<div class="nodecontent">Account Supervisor</div>
 								<ul>
 									<li class="leaf">
@@ -26,8 +25,8 @@
 							</li>
 						</ul>
 					</li>
-					<li class="vertical">
-						<div class="nodecontent">Vice President <br/> Creative Services</div>
+					<li>
+						<div class="nodecontent">Vice President<br/>Creative Services</div>
 						<ul>
 							<li class="leaf">
 								<div class="nodecontent">Art / Copy</div>
@@ -37,8 +36,8 @@
 							</li>
 						</ul>
 					</li>
-					<li class="vertical">
-						<div class="nodecontent">Vice President <br/> Marketing Services</div>
+					<li>
+						<div class="nodecontent">Vice President<br/>Marketing Services</div>
 						<ul>
 							<li class="leaf">
 								<div class="nodecontent">Media</div>
@@ -48,8 +47,8 @@
 							</li>
 						</ul>
 					</li>
-					<li class="vertical">
-						<div class="nodecontent">Vice President <br/> Management Services</div>
+					<li>
+						<div class="nodecontent">Vice President<br/>Management Services</div>
 						<ul>
 							<li class="leaf">
 								<div class="nodecontent">Accounting</div>

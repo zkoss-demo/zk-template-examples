@@ -41,25 +41,25 @@ public class OrgChartViewModel {
 		return orgChartRoot;
 	}
 
-	private ModelNode<OrgNodeData> orgNode(OrgNodeData.Type president, String label, String line2, String icon, ModelNode<OrgNodeData>... children) {
+	private ModelNode<OrgNodeData> orgNode(OrgNodeData.Type president, String title, String name, String icon, ModelNode<OrgNodeData>... children) {
 		if(children.length > 0) {
-			return new ModelNode<OrgNodeData>(new OrgNodeData(president, label, line2, icon), Arrays.asList(children));
+			return new ModelNode<OrgNodeData>(new OrgNodeData(president, title, name, icon), Arrays.asList(children));
 		} else {
-			return new ModelNode<OrgNodeData>(new OrgNodeData(president, label, line2, icon));
+			return new ModelNode<OrgNodeData>(new OrgNodeData(president, title, name, icon));
 		}
 	}
 
 	public static class OrgNodeData {
 		public enum Type {PRESIDENT, VICE_PRESIDENT, SUPERVISOR, EMPLOYEE}
 		private Type type;
-		private String label;
-		private String line2;
+		private String title;
+		private String name;
 		private String icon;
 
-		public OrgNodeData(Type type, String label, String line2, String icon) {
+		public OrgNodeData(Type type, String title, String name, String icon) {
 			this.type = type;
-			this.label = label;
-			this.line2 = line2;
+			this.title = title;
+			this.name = name;
 			this.icon = icon;
 		}
 
@@ -67,12 +67,12 @@ public class OrgChartViewModel {
 			return type;
 		}
 
-		public String getLabel() {
-			return label;
+		public String getTitle() {
+			return title;
 		}
 
-		public String getLine2() {
-			return line2;
+		public String getName() {
+			return name;
 		}
 
 		public String getIcon() {

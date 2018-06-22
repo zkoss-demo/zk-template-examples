@@ -1,0 +1,28 @@
+.centered {
+    text-align: center;
+}
+
+.nodecontent {
+    display: inline-block;
+    background-color: DarkTurquoise;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+.nodecontent:hover {
+    background-color: MediumSeaGreen;
+}
+
+.nodecontent .collapse {
+    position: absolute;
+    bottom: -15px;
+    left: calc(50% - 6px);
+    color: #EEEEEE;
+    background-color: #CCCCCC;
+    border-radius: 6px;
+    height: 12px;
+    width: 12px;
+    font-size: 12px;
+    text-align: center;
+}

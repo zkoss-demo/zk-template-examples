@@ -57,4 +57,17 @@
     background-color: #73B6B1;
 }
 
+.nodecontent .collapse {
+    position: absolute;
+    bottom: -15px;
+    left: calc(50% - 6px);
+    z-index: 0;
+    color: white;
+    background-color: #CCCCCC;
+    border-radius: 6px;
+    height: 12px;
+    width: 12px;
+    font-size: 12px;
+    text-align: center;
+}
 

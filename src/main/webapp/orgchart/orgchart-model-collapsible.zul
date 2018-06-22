@@ -1,6 +1,6 @@
 <?style src="css/orgchart.css"?>
 <?style src="css/orgchart-vertical.css"?>
-<?style src="css/full.css"?>
+<?style src="css/simple.css"?>
 <?component name="orgchart" templateURI="template/orgchart-template.zul"?>
 <zk xmlns:w="client">
 	<script>
@@ -9,14 +9,10 @@
 			jq(wgt).find('i').toggleClass('z-icon-minus z-icon-plus');
 		}
 	</script>
-
 	<div sclass="centered" viewModel="@id('vm') @init('zk.example.template.orgchart.OrgChartViewModel')">
 		<orgchart root="@init(vm.orgChartRoot)" collapsible="true">
 			<template name="nodecontent">
-				<div sclass="orgnode ${data.type}">
-					<if test="${!empty data.icon}">
-						<div sclass="icon" style="${('background-image: url(\'' += data.icon += '\')')}"/>
-					</if>
+				<div>
 					<label value="${data.title}"/>
 					<if test="${!empty data.name}">
 						<separator/>
