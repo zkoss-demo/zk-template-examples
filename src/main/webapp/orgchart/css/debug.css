@@ -1,0 +1,11 @@
+ul.orgchart, .orgchart ul {
+    border: 5px solid DarkBlue;
+}
+
+.orgchart li {
+    border: 5px solid Lime;
+}
+
+.orgchart .nodecontent {
+    outline: 5px solid DeepPink;
+}

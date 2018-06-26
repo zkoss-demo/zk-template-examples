@@ -1,6 +1,7 @@
 <?style src="css/orgchart.css"?>
 <?style src="css/orgchart-vertical.css"?>
 <?style src="css/simple.css"?>
+<!--<?style src="css/debug.css"?>-->
 <zk>
 	<div xmlns="xhtml" class="centered">
 		<ul class="orgchart">

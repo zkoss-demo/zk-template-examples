@@ -1,6 +1,7 @@
 <?style src="css/orgchart.css"?>
 <?style src="css/orgchart-vertical.css"?>
 <?style src="css/full.css"?>
+<!--<?style src="css/debug.css"?>-->
 <?component name="orgchart" templateURI="template/orgchart-template.zul"?>
 <zk xmlns:w="client">
 	<script>

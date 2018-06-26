@@ -9,16 +9,19 @@
     margin: 0;
 }
 
+/*align children horizontally using CSS flex*/
 .orgchart ul {
     display: flex;
 }
 
+/*align nodecontent and children list vertically*/
 .orgchart li {
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
+/*arrange the nodecontent centered above the children list*/
 .orgchart .nodecontent {
     align-self: center;
     position: relative;
