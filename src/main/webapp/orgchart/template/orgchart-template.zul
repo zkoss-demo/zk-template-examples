@@ -9,7 +9,7 @@
 				<apply template="nodecontent" data="${node.data}"/>
 			</x:div>
 			<if test="${not empty node.children}">
-				<x:ul sclass="nodelist">
+				<x:ul>
 					<forEach items="${node.children}">
 						<apply template="node" node="${each}" root="${false}"/>
 					</forEach>
