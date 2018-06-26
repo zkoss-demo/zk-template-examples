@@ -4,79 +4,47 @@ import org.zkoss.bind.annotation.Init;
 
 import java.util.Arrays;
 
-import static zk.example.template.orgchart.OrgChartViewModel.OrgNodeData.Type.*;
+import static zk.example.template.orgchart.OrgNodeData.Type.*;
 
 public class OrgChartViewModel {
-
-	private static String NO_IMAGE = null;
-	private ModelNode<OrgNodeData> orgChartRoot;
+	private static final String NO_IMAGE = null;
+	private OrgNode<OrgNodeData> orgChartRoot;
 
 	@Init
 	public void init() {
-		orgChartRoot = orgNode(PRESIDENT, "President", null, "icon/icon1.svg",
-				orgNode(VICE_PRESIDENT, "Vice President", "Account Services", "icon/icon2.svg",
-						orgNode(SUPERVISOR, "Account Supervisor", null, NO_IMAGE,
-								orgNode(EMPLOYEE, "Account Executive", null, NO_IMAGE),
-								orgNode(EMPLOYEE, "Account Executive", null, NO_IMAGE)
+		orgChartRoot = createOrgNode(PRESIDENT, "President", null, "icon/icon1.svg",
+				createOrgNode(VICE_PRESIDENT, "Vice President", "Account Services", "icon/icon2.svg",
+						createOrgNode(SUPERVISOR, "Account Supervisor", null, NO_IMAGE,
+								createOrgNode(EMPLOYEE, "Account Executive", null, NO_IMAGE),
+								createOrgNode(EMPLOYEE, "Account Executive", null, NO_IMAGE)
 						),
-						orgNode(SUPERVISOR, "Account Supervisor", null, NO_IMAGE)
+						createOrgNode(SUPERVISOR, "Account Supervisor", null, NO_IMAGE)
 				),
-				orgNode(VICE_PRESIDENT, "Vice President", "Creative Services", "icon/icon3.svg",
-						orgNode(SUPERVISOR, "Art / Copy", null, NO_IMAGE),
-						orgNode(SUPERVISOR, "Production", null, NO_IMAGE)
+				createOrgNode(VICE_PRESIDENT, "Vice President", "Creative Services", "icon/icon3.svg",
+						createOrgNode(SUPERVISOR, "Art / Copy", null, NO_IMAGE),
+						createOrgNode(SUPERVISOR, "Production", null, NO_IMAGE)
 				),
-				orgNode(VICE_PRESIDENT, "Vice President", "Marketing Services", "icon/icon4.svg",
-						orgNode(SUPERVISOR, "Media", null, NO_IMAGE),
-						orgNode(SUPERVISOR, "Research", null, NO_IMAGE)
+				createOrgNode(VICE_PRESIDENT, "Vice President", "Marketing Services", "icon/icon4.svg",
+						createOrgNode(SUPERVISOR, "Media", null, NO_IMAGE),
+						createOrgNode(SUPERVISOR, "Research", null, NO_IMAGE)
 				),
-				orgNode(VICE_PRESIDENT, "Vice President", "Management Services", "icon/icon5.svg",
-						orgNode(SUPERVISOR, "Accounting", null, NO_IMAGE),
-						orgNode(SUPERVISOR, "Personnel", null, NO_IMAGE),
-						orgNode(SUPERVISOR, "Purchasing", null, NO_IMAGE)
+				createOrgNode(VICE_PRESIDENT, "Vice President", "Management Services", "icon/icon5.svg",
+						createOrgNode(SUPERVISOR, "Accounting", null, NO_IMAGE),
+						createOrgNode(SUPERVISOR, "Personnel", null, NO_IMAGE),
+						createOrgNode(SUPERVISOR, "Purchasing", null, NO_IMAGE)
 				)
 		);
 	}
 
-	public ModelNode<OrgNodeData> getOrgChartRoot() {
+	public OrgNode<OrgNodeData> getOrgChartRoot() {
 		return orgChartRoot;
 	}
 
-	private ModelNode<OrgNodeData> orgNode(OrgNodeData.Type president, String title, String name, String icon, ModelNode<OrgNodeData>... children) {
-		if(children.length > 0) {
-			return new ModelNode<OrgNodeData>(new OrgNodeData(president, title, name, icon), Arrays.asList(children));
+	public static OrgNode<OrgNodeData> createOrgNode(OrgNodeData.Type type, String title, String name, String icon, OrgNode<OrgNodeData>... children) {
+		if (children.length > 0) {
+			return new OrgNode<OrgNodeData>(new OrgNodeData(type, title, name, icon), Arrays.asList(children));
 		} else {
-			return new ModelNode<OrgNodeData>(new OrgNodeData(president, title, name, icon));
-		}
-	}
-
-	public static class OrgNodeData {
-		public enum Type {PRESIDENT, VICE_PRESIDENT, SUPERVISOR, EMPLOYEE}
-		private Type type;
-		private String title;
-		private String name;
-		private String icon;
-
-		public OrgNodeData(Type type, String title, String name, String icon) {
-			this.type = type;
-			this.title = title;
-			this.name = name;
-			this.icon = icon;
-		}
-
-		public Type getType() {
-			return type;
-		}
-
-		public String getTitle() {
-			return title;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public String getIcon() {
-			return icon;
+			return new OrgNode<OrgNodeData>(new OrgNodeData(type, title, name, icon));
 		}
 	}
 }
